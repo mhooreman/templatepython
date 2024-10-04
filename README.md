@@ -9,7 +9,7 @@ A python project template
 - [Additional information on using](#additional-information-on-using)
 - [Development](#Development)
   - [Project and environment](#project-and-environment)
-    - [Code quality control requirements](#code-quality-control-requirements)
+  - [Code quality control requirements](#code-quality-control-requirements)
     - [Code linting](#code-linting)
     - [Typing](#typing)
     - [Code documentation](#code-documentation)

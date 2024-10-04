@@ -52,8 +52,6 @@ language.
 
 ### Project and environment
 
-Development is managed using hatch.
-
 Development is managed using hatch. If you don't have it, it please go on
 [the hatch installation web site](https://hatch.pypa.io/latest/install/).
 

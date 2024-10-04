@@ -24,6 +24,8 @@ wheel from the github releases, and install it using pip.
 
 For example: `pip install templatepython-0.0.1-py3-none-any.wh`.
 
+**Note:** this project is not yet distributed on PyPI.
+
 We strongly recommend to run it in a dedicated virtual envionment, to avoid
 potential conflict with other python scripts and libraries installed on the
 system (python best practice). If you choose for this option, please see the
@@ -44,7 +46,7 @@ language.
 
 ...
 
-*Comment*
+**Note**
 The entry points are configured in `[project.script]` inside pyproject.toml:
 - `scriptname = "package.module:mainfunction"` or
 - `scriptname = "package.module:Class.staticmdethod"`

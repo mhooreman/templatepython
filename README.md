@@ -135,6 +135,8 @@ Issues shall be reported via the project GIT repository's issues
 
 Apart of those issues, the following limitations are known:
 
+- ...
+
 ## License and copyright
 
 This is distributed under the terms of the BSD 3-Clause License.

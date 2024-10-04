@@ -1,5 +1,3 @@
-# Copyright (C) 2024-present Michaël Hooreman <mhooreman@icloud.com>
-
 # templatepython
 A python project template
 

@@ -44,6 +44,8 @@ language.
 
 ...
 
+(The entry points are configured in `[project.script]` inside pyproject.toml).
+
 ## Additional information on using
 
 ...

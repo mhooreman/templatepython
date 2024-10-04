@@ -1,4 +1,4 @@
-# templatepython - A python project template with my habits
+# templatepython - A python project template
 
 ## Table of contents
 

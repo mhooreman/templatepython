@@ -1,0 +1,222 @@
+# Copyright (C) 2024-present Michaël Hooreman <mhooreman@icloud.com>
+
+###############################################################################
+# Project information
+###############################################################################
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "templatepython"
+dynamic = ["version"]
+description = 'A python project template'
+readme = "README.md"
+requires-python = ">=3.10"
+license = "BSD-3-Clause"
+keywords = []
+authors = [
+    { name = "Michaël Hooreman", email = "mhooreman@icloud.com" },
+]
+classifiers = [
+    # See the list of trove classifiers on https://pypi.org/classifiers/
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+    "click",
+]
+
+[project.urls]
+Documentation = "https://github.com/Michaël Hooreman/templatepython#readme"
+Issues = "https://github.com/Michaël Hooreman/templatepython/issues"
+Source = "https://github.com/Michaël Hooreman/templatepython"
+
+[project.scripts]
+templatepython = "templatepython.cli:templatepython"
+
+###############################################################################
+# Hatch configuration
+###############################################################################
+
+[tool.hatch.version]
+path = "src/templatepython/__about__.py"
+
+
+#------------------------------------------------------------------------------
+# Default environment
+#------------------------------------------------------------------------------
+
+[tool.hatch.envs.default]
+dependencies = [
+    "ruff"
+]
+
+#------------------------------------------------------------------------------
+# Types environment
+#------------------------------------------------------------------------------
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+    "mypy>=1.0.0",
+    "pytest",
+]
+
+[tool.hatch.envs.types.scripts]
+check = """mypy                                \\
+    --install-types --non-interactive          \\
+    --show-error-context --show-column-numbers \\
+    --show-error-end --show-error-code-links   \\
+    --pretty                                   \\
+    {args:src/templatepython tests}"""
+
+# =============================================================================
+# MyPy configuration
+# =============================================================================
+
+[tool.mypy]
+strict = true
+
+# =============================================================================
+# Hatch test configuration
+# =============================================================================
+
+[tool.hatch.envs.hatch-test]
+default-args = ["tests"]
+extra-args = ["-vv"]
+randomize = true
+parallel = true
+retries = 1
+retry-delay = 1
+extra-dependencies = [
+]
+python = [
+    "3.12",
+    "3.11",
+    "3.10",
+]
+
+# =============================================================================
+# Coverage configuration
+# =============================================================================
+
+[tool.coverage.run]
+source_pkgs = ["templatepython", "tests"]
+branch = true
+parallel = true
+randomize = true
+omit = [
+    "src/templatepython/__about__.py",
+]
+
+[tool.coverage.paths]
+src = ["src/templatepython", "*/templatepython/src/templatepython"]
+tests = ["tests", "*/templatepython/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+format = "text"
+show_missing = true
+
+# =============================================================================
+# Ruff configuration
+# =============================================================================
+
+[tool.ruff]
+line-length = 79  # pep8
+preview = true  # Needed if you want to evable CPY DOC and/or FAST
+src = ['src', ]
+
+[tool.ruff.lint]
+dummy-variable-rgx = "^_$"  #  Only ignore variables named "_"
+task-tags = ["TODO", ]  # XXX and FIXME are discouraged by some rules
+select = [
+    "N",       # pep8-naming
+    "D",       # pydocstyle
+    "F",       # Pyflakes
+    "E",       # E/W pycodestyle
+    "W",       # E/W pycodestyle
+    "C90",     # mccabe
+    "I",       # isort
+    "UP",      # pyupgrade
+    "YTT",     # flake8-2020
+    "ANN",     # flake8-annotations
+    "ASYNC",   # flake8-async
+    "S",       # flake8-bandit
+    "BLE",     # flake8-blind-except
+    "FBT",     # flake8-boolean-trap
+    "B",       # flake8-bugbear
+    "A",       # flake8-builtins
+    "COM",     # flake8-commas
+    "C4",      # flake8-comprehensions
+    "DTZ",     # flake8-datetimez
+    "T10",     # flake8-debugger
+    "DJ",      # flake8-django
+    "EM",      # flake8-errmsg
+    "EXE",     # flake8-executable
+    "FA",      # flake8-future-annotations
+    "ISC",     # flake8-implicit-str-concat
+    "ICN",     # flake8-import-conventions
+    "LOG",     # flake8-logging
+    "G",       # flake8-logging-format
+    "INP",     # flake8-no-pep420
+    "PIE",     # flake8-pie
+    "T20",     # flake8-print
+    "PYI",     # flake8-pyi
+    "PT",      # flake8-pytest-style
+    "Q",       # flake8-quotes
+    "RSE",     # flake8-raise
+    "RET",     # flake8-return
+    "SLF",     # flake8-self
+    "SLOT",    # flake8-slots
+    "SIM",     # flake8-simplify
+    "TID",     # flake8-tidy-imports
+    "TCH",     # flake8-type-checking
+    "INT",     # flake8-gettext
+    "ARG",     # flake8-unused-arguments
+    "PTH",     # flake8-use-pathlib
+    "TD",      # flake8-todos
+    "FIX",     # flake8-fixme
+    "ERA",     # eradicate
+    "PD",      # pandas-vet
+    "PGH",     # pygrep-hooks
+    "PL",      # Pylint
+    "TRY",     # tryceratops
+    "FLY",     # flynt
+    "NPY",     # NumPy-specific rules
+    "AIR",     # Airflow
+    "PERF",    # Perflint
+    "FURB",    # refurb
+    "RUF",     # Ruff-specific rules
+    "CPY",     # flake8-copyright - only in preview mode
+    # "FAST",  # FastAPI - only in preview mode
+    # "DOC",   # pydoclint - only in preview mode
+]
+ignore = [
+    # Those ones makes conflict
+    "D203",    # We prefer D211
+    "D213",    # We prefer D212
+    "COM812",  #
+    "ISC001",  #
+    # Disabled as it doesn't agree with mypy
+    "UP040",   # `TypeAlias` annotation not yet supported by mypy
+    "PGH003",  # we don't know the rule name from mypy...
+    # Those we accept
+    "DTZ005",  # Missing time zone info when reading time
+    "DTZ011",  # datetime.date.today() used
+    "PD013",   # Prefer melt over stack in pandas
+    "PD002",   # Pandas inplace should be avoided. I don't agree.
+    "PD010",   # `.pivot_table` is preferred to `.pivot` or `.unstack`
+]

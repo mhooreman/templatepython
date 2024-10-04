@@ -114,6 +114,14 @@ Unit testing with statement and decision coverage is executed by
 
 Unit testing on supported python version is executed by `hatch test --all`.
 
+### Building
+
+Make sure that the version number is up-to-date by either editing
+`__about__.py` or by invoking `hatch version` accordingly.
+
+The command `hatch build` builds the sdist and wheel packages. Those packages
+will then eventually be attached to the github releases.
+
 ## Releases and changes
 
 As soon as the version 0.1.0 is released, every development shall refer a

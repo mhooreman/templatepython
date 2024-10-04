@@ -1,6 +1,54 @@
 # templatepython
 A python project template
 
+## Table of contents
+
+- [Installation](#installation)
+- [Supported python](#supported-python)
+- [Usage](#usage)
+- [Additional information on using](#additional-information-on-using)
+- [Development](#Development)
+  - [Project and environment](#project-and-environment)
+    - [Code quality control requirements](#code-quality-control-requirements)
+    - [Code linting](#code-linting)
+    - [Typing](#typing)
+    - [Code documentation](#code-documentation)
+    - [Unit testing](#unit-testing)
+- [Releases and changes](#releases-and-changes)
+- [Reporting issues](#reporting-issues)
+- [License and copyright](#license-and-copyright)
+
+## Installation
+
+The tool is for now not published on PyPI. To install, download the latest
+wheel from the github releases, and install it using pip.
+
+For example: `pip install templatepython-0.0.1-py3-none-any.wh`.
+
+We strongly recommend to run it in a dedicated virtual envionment, to avoid
+potential conflict with other python scripts and libraries installed on the
+system (python best practice). If you choose for this option, please see the
+venv documentation.
+
+## Supported python
+
+Any CPython version starting from python 3.10 is supported: when issusing the
+first version of the project, 3.8 and 3.9 were still supported by the python
+foundation, but since we're taking benefits from python 3.10 new features, it
+has been chosen to not support previous versions of the language.
+
+No other python than CPython is officially neither supported not tested ...
+which doesn't means that it won't work with other implementations of the
+language.
+
+## Usage
+
+...
+
+## Additional information on using
+
+...
+
 ## Development
 
 ### Project and environment
@@ -67,7 +115,7 @@ Unit testing with statement and decision coverage is executed by
 
 Unit testing on supported python version is executed by `hatch test --all`.
 
-#### Releases and changes
+## Releases and changes
 
 As soon as the version 0.1.0 is released, every development shall refer a
 github issue. Upgrade to version minor or version major whall be made via a
@@ -81,7 +129,7 @@ publication of the build.
 The build shall be created on the upgraded main branch and published as a
 github version. A corresponding tag shall be created.
 
-#### Reporting issues
+## Reporting issues
 
 Issues shall be reported via the project GIT repository's issues
 

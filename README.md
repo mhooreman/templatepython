@@ -44,7 +44,10 @@ language.
 
 ...
 
-(The entry points are configured in `[project.script]` inside pyproject.toml).
+*Comment*
+The entry points are configured in `[project.script]` inside pyproject.toml:
+- `scriptname = "package.module:mainfunction"` or
+- `scriptname = "package.module:Class.staticmdethod"`
 
 ## Additional information on using
 
@@ -98,10 +101,11 @@ This shall be checked using `hatch run types:check`.
 
 All the public features in the code shall be documented. The numpy docstring
 convention shall be used, wich the exception that, thanks to typing, type
-documentation is not needed. Please refer to this example.
+documentation is not needed. Please refer to
+[this example](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html).
 
 Documentation of private features is optional, and becomes required if
-requested by (code linting)[#code-linting].
+requested by [code linting](#code-linting).
 
 It shall be checked using `hatch fmt`.
 

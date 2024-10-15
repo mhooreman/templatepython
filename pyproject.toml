@@ -33,6 +33,7 @@ classifiers = [
 ]
 dependencies = [
     "click",
+    "loguru",
 ]
 
 [project.urls]

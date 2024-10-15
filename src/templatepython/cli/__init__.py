@@ -3,6 +3,7 @@
 """Command line interface."""
 
 import click
+from loguru import logger
 
 from templatepython.__about__ import __version__
 
@@ -16,4 +17,6 @@ from templatepython.__about__ import __version__
 )
 def templatepython() -> None:
     """Do the same thing as any template project: say hello."""
+    logger.info("Starting")
     click.echo("Hello world!")
+    logger.info("Completed")

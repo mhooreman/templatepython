@@ -338,12 +338,22 @@ class About:
     location: pathlib.Path = _LOCATION
     author: str = _AUTHOR
     author_email: str = _AUTHOR_EMAIL
-    datadir: pathlib.Path = dataclasses.field(
+    _common_datadir: pathlib.Path = dataclasses.field(
         # Using this pattern as the _get_base_storage returns a mutable object,
         # which is a problem in linting (RUF009).
         # Note that the default factory shall be a calable...
         default_factory=_get_base_storage
     )
+
+    def get_env_datadir(self, environment: str) -> pathlib.Path:
+        """Return the data directory for a given environment.
+
+        This is a subdirectory of the default data directory.
+        """
+        ret = self._common_datadir / environment
+        if not ret.exists():
+            ret.mkdir(parents=True, exist_ok=True)
+        return ret
 
 
 about = About()

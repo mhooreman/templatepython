@@ -49,10 +49,9 @@ classifiers = [
 ]
 
 dependencies = [
-    "BeautifulSoup4",
+    # Command line interface
     "click",
-    "jinja2",
-    "lxml",
+    # Data science
     "matplotlib",
     "numpy",
     "openpyxl",
@@ -62,6 +61,15 @@ dependencies = [
     "seaborn",
     "sqlalchemy",
     "xarray",
+    # Web application
+    "flask",
+    "flask-sqlalchemy",
+    "flask-bootstrap",
+    "flask-wtf",
+    # Data science and web application
+    "BeautifulSoup4",
+    "jinja2",
+    "lxml",
 ]
 
 [project.urls]

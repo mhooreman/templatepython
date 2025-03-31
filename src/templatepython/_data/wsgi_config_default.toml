@@ -1,0 +1,34 @@
+# Configuration file
+#
+# The {{STORAGE}} special value will be replaced by the storage location.
+# All the values in default will be copied in the other environments, unless it
+# is already defined.
+#
+# A section in this file can ONLY have scalar or list values. No subsection
+# allowed.
+
+[default]
+RUN_HOST = "0.0.0.0"
+RUN_PORT = "8000"
+DEBUG = false
+TESTING = false
+SECRET_KEY = "REPLACE WITH OUTPUT OF templatepython wsgi config seckey"
+SQLALCHEMY_DATABASE_URI = 'sqlite:///{{STORAGE}}/database.db'
+SESSION_TYPE = 'sqlalchemy'
+
+[development]
+DEBUG = true
+TESTING = true
+
+SQLALCHEMY_ECHO = true
+TEMPLATES_AUTO_RELOAD = true
+
+[testing]
+SQLALCHEMY_ECHO = true
+DEBUG = true
+TESTING = true
+
+[validation]
+TESTING = true
+
+[production]

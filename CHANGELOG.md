@@ -1,3 +1,3 @@
 # ChangeLog
 
-See doc/changelog.md
+See [doc/changelog.md](doc/changelog.md)

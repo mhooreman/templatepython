@@ -49,8 +49,19 @@ classifiers = [
 ]
 
 dependencies = [
+    "BeautifulSoup4",
     "click",
     "jinja2",
+    "lxml",
+    "matplotlib",
+    "numpy",
+    "openpyxl",
+    "pandas",
+    "pandas[performance]",
+    "scipy",
+    "seaborn",
+    "sqlalchemy",
+    "xarray",
 ]
 
 [project.urls]
@@ -71,6 +82,7 @@ path = "src/templatepython/_about.py"
 [tool.hatch.envs.default]
 dependencies = [
     "ruff",
+    "notebook",
 ]
 
 # =============================================================================

@@ -1,2 +1,4 @@
-# templatepythonflask
-Template for python with flask
+# templatepython
+Template for python with common libraries
+
+See doc/readme.md

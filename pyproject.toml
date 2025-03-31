@@ -1,0 +1,252 @@
+###############################################################################
+# Project information
+###############################################################################
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "templatepython"
+dynamic = ["version"]
+description = "Python template with flask"
+readme = "README.md"
+python = "3.13"
+requires-python = ">=3.10"
+license = {text = "Proprietary"}
+keywords = []
+authors = [
+    { name = "Michaël Hooreman", email = "mhooreman@icloud.com" },
+]
+classifiers = [
+    "Private :: Do Not Upload",
+    # See the list of trove classifiers on https://pypi.org/classifiers/
+    "Development Status :: 2 - Pre-Alpha",
+    # "Development Status :: 3 - Alpha",
+    # "Development Status :: 4 - Beta",
+    # "Development Status :: 5 - Production/Stable",
+    # "Development Status :: 6 - Mature",
+    # "Development Status :: 7 - Inactive",
+    "Framework :: Hatch",
+    "Framework :: MkDocs",
+    "Framework :: Flask",
+    "License :: OSI Approved :: BSD License",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: OS Independent",
+    "Operating System :: POSIX",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    "click",
+    "jinja2",
+]
+
+[project.urls]
+Documentation = "https://github.com/Michaël Hooreman/templatepython/doc/"
+Issues = "https://github.com/Michaël Hooreman/templatepython/issues"
+Source = "https://github.com/Michaël Hooreman/templatepython"
+
+[project.scripts]
+templatepython = "templatepython.cli:templatepython"
+
+###############################################################################
+# Hatch configuration
+###############################################################################
+
+[tool.hatch.version]
+path = "src/templatepython/_about.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+    "ruff",
+]
+
+# =============================================================================
+# MyPy configuration
+# =============================================================================
+
+[tool.hatch.envs.types]
+dependencies = [
+    "mypy>=1.0.0",
+]
+
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types {args:src/templatepython devtools tests}"
+
+[tool.mypy]
+strict = true
+show_error_context = true
+show_column_numbers = true
+show_error_end = true
+show_error_code_links = true
+pretty = true
+
+# =============================================================================
+# Hatch test configuration
+# =============================================================================
+
+[tool.hatch.envs.hatch-test]
+default-args = ["tests"]
+extra-args = ["-vv"]
+randomize = false
+parallel = true
+retries = 0
+retry-delay = 1
+extra-dependencies = []
+
+[[tool.hatch.envs.hatch-test.matrix]]
+python = [
+    "3.10",
+    "3.11",
+    "3.12",
+    "3.13",
+]
+
+# =============================================================================
+# Coverage configuration
+# =============================================================================
+
+[tool.coverage.run]
+source_pkgs = ["templatepython", "tests"]
+branch = true
+parallel = true
+omit = [
+    "src/templatepython/__about__.py",
+]
+
+[tool.coverage.paths]
+src = ["src/templatepython", "*/templatepython/src/templatepython"]
+tests = ["tests", "*/templatepython/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+format = "text"
+show_missing = true
+
+# =============================================================================
+# Ruff configuration
+# =============================================================================
+
+[tool.ruff]
+line-length = 79  # pep8
+preview = true  # Needed if you want to evable CPY DOC and/or FAST
+src = ['src', 'devtools']
+exclude = []
+
+[tool.ruff.lint.per-file-ignores]
+'tests/*' = ['S101', ]  # Pytest uses assert
+
+[tool.ruff.lint]
+dummy-variable-rgx = "^_$"  #  Only ignore variables named "_"
+task-tags = ["TODO", ]  # XXX and FIXME are discouraged by some rules
+select = [
+    "N",       # pep8-naming
+    "D",       # pydocstyle
+    "F",       # Pyflakes
+    "E",       # E/W pycodestyle
+    "W",       # E/W pycodestyle
+    "C90",     # mccabe
+    "I",       # isort
+    "UP",      # pyupgrade
+    "YTT",     # flake8-2020
+    "ANN",     # flake8-annotations
+    "ASYNC",   # flake8-async
+    "S",       # flake8-bandit
+    "BLE",     # flake8-blind-except
+    "FBT",     # flake8-boolean-trap
+    "B",       # flake8-bugbear
+    "A",       # flake8-builtins
+    "COM",     # flake8-commas
+    "C4",      # flake8-comprehensions
+    "DTZ",     # flake8-datetimez
+    "T10",     # flake8-debugger
+    "DJ",      # flake8-django
+    "EM",      # flake8-errmsg
+    "EXE",     # flake8-executable
+    "FA",      # flake8-future-annotations
+    "ISC",     # flake8-implicit-str-concat
+    "ICN",     # flake8-import-conventions
+    "LOG",     # flake8-logging
+    "G",       # flake8-logging-format
+    "INP",     # flake8-no-pep420
+    "PIE",     # flake8-pie
+    "T20",     # flake8-print
+    "PYI",     # flake8-pyi
+    "PT",      # flake8-pytest-style
+    "Q",       # flake8-quotes
+    "RSE",     # flake8-raise
+    "RET",     # flake8-return
+    "SLF",     # flake8-self
+    "SLOT",    # flake8-slots
+    "SIM",     # flake8-simplify
+    "TID",     # flake8-tidy-imports
+    "TCH",     # flake8-type-checking
+    "INT",     # flake8-gettext
+    "ARG",     # flake8-unused-arguments
+    "PTH",     # flake8-use-pathlib
+    "TD",      # flake8-todos
+    "FIX",     # flake8-fixme
+    "ERA",     # eradicate
+    "PD",      # pandas-vet
+    "PGH",     # pygrep-hooks
+    "PL",      # Pylint
+    "TRY",     # tryceratops
+    "FLY",     # flynt
+    "NPY",     # NumPy-specific rules
+    "AIR",     # Airflow
+    "PERF",    # Perflint
+    "FURB",    # refurb
+    "RUF",     # Ruff-specific rules
+    "CPY",     # flake8-copyright - only in preview mode
+    # "FAST",  # FastAPI - only in preview mode
+    # "DOC",   # pydoclint - only in preview mode
+]
+ignore = [
+    # False positive because of standard library replacement
+    "S413",    # replaced pycrpyto by pycryptodome
+    # Those ones makes conflict
+    "D203",    # We prefer D211
+    "D213",    # We prefer D212
+    "COM812",  #
+    "ISC001",  #
+    # Disabled as it doesn't agree with mypy
+    "UP040",   # `TypeAlias` annotation not yet supported by mypy
+    "PGH003",  # we don't know the rule name from mypy...
+    # We don't agree
+    "D416",    # Since we use underlining for sections, we don't want column
+    # Those we accept
+    "CPY001",  # No copyright at the beginning of a file
+    "DTZ005",  # Missing time zone info when reading time
+    "DTZ011",  # datetime.date.today() used
+    "PD002",   # Pandas inplace should be avoided. I don't agree.
+]
+
+# =============================================================================
+# Docs configuration
+# =============================================================================
+
+[tool.hatch.envs.doc]
+dependencies = [
+    "mkdocs",
+]
+
+[tool.hatch.envs.doc.scripts]
+serve = "python devtools/dochelper.py serve {args}"
+build = "python devtools/dochelper.py build {args}"
+deps = "python devtools/dochelper.py show-deps {args}"

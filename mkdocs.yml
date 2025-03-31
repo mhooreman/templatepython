@@ -1,0 +1,29 @@
+site_name: templatepython
+site_description: templatepython
+site_author: Michaël Hooreman
+
+docs_dir: 'doc'
+site_dir: 'built'  # will be replaced by dochelper.py as temp directory
+
+repo_url: https://github.com/mhooreman/templatepython
+edit_uri: '' #tree/main/doc/docs'
+
+theme:
+  name: readthedocs
+  prev_next_buttons_location: both
+
+nav:
+  - Welcome: index.md
+  - Usage: usage.md
+  - Environment: environment.md
+  - Installation: installation.md
+  - Versioning: versioning.md
+  - Development: development.md
+  - Publishing: publishing.md
+  - Design: design.md
+  - Validation: validation.md
+  - Support: support.md
+  - Change log: changelog.md
+  - License: license.md
+
+copyright: Copyright &copy; 2025-Today <a href="mailto:mhooreman@icloude.com">Michaël Hooreman</a>. See license and support pages.

@@ -1,4 +1,5 @@
 # templatepython
+
 Template for python with common libraries
 
-See doc/readme.md
+See [doc/index.md](doc/index.md)

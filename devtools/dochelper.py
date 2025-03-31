@@ -11,10 +11,10 @@ import shutil
 import subprocess  # noqa: S404
 import sys
 import tempfile
+import tomllib
 import typing
 
 import click
-import tomllib
 
 
 class DocHelper:

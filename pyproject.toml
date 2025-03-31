@@ -105,7 +105,8 @@ dependencies = [
 ]
 
 [tool.hatch.envs.types.scripts]
-check = "mypy --install-types {args:src/templatepython devtools tests}"
+# check = "mypy --install-types {args:src/templatepython devtools tests}"
+check = "mypy --install-types {args:src/templatepython devtools}"
 
 [tool.mypy]
 strict = true

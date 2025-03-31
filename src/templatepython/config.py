@@ -4,9 +4,8 @@ import os
 import pathlib
 import platform
 import shutil
-import typing
-
 import tomllib
+import typing
 
 from templatepython import about
 
